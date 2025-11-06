@@ -7,9 +7,11 @@ import { useState } from 'react';
 function App() {
 
   const [selectedTopic, setSelectedTopic] = useState();
+  const [selectedTab, setSelectedTab] = useState();
 
   function handleSelect(event) {
     setSelectedTopic(event);
+    setSelectedTab(event);
     console.log(selectedTopic);
     console.log(EXAMPLES[selectedTopic]);
   }
@@ -51,18 +53,22 @@ function App() {
         <section id="examples">
           <menu>
             <TabButton
+              isSelected={selectedTopic === 'components'}
               onSelect={() => handleSelect('components')}
               setSelectedTopic={setSelectedTopic}
             >Components</TabButton>
             <TabButton
+              isSelected={selectedTopic === 'jsx'}
               onSelect={() => handleSelect('jsx')}
               setSelectedTopic={setSelectedTopic}
             >JSX</TabButton>
             <TabButton
+              isSelected={selectedTopic === 'props'}
               onSelect={() => handleSelect('props')}
               setSelectedTopic={setSelectedTopic}
             >Props</TabButton>
             <TabButton
+              isSelected={selectedTopic === 'state'}
               onSelect={function () { handleSelect('state') }}
               setSelectedTopic={setSelectedTopic}
             >State</TabButton>
