@@ -1,5 +1,5 @@
 import Header from './components/Header';
-import CoreConcepts from './components/CoreConcepts';
+import CoreConcept from './components/CoreConcept';
 import { CORE_CONCEPTS, EXAMPLES } from './data';
 import TabButton from './components/TabButton';
 import { useState } from 'react';
@@ -46,7 +46,7 @@ function App() {
           <h2>React Core Concepts!</h2>
           <ul>
             {CORE_CONCEPTS && CORE_CONCEPTS.map((concept, index) =>
-              <CoreConcepts key={index} {...concept} />
+              <CoreConcept key={index} {...concept} />
             )}
           </ul>
         </section>
