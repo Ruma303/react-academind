@@ -1,26 +1,25 @@
 import { useState } from "react";
 
-const initialGameboard = [
+const initialGameBoard = [
   [null, null, null],
   [null, null, null],
   [null, null, null],
 ];
 
-export default function GameBoard() {
-  const [gameBoard, setGameBoard] = useState(initialGameboard);
+export default function GameBoard({ onSelectSquare, activePlayerSymbol }) {
+  const [gameBoard, setGameBoard] = useState(initialGameBoard);
 
   function handleSelectSquare(rowIndex, colIndex) {
     setGameBoard((prev) => {
-      const updatedBoard = prev.map(innerArray => [...innerArray]);
-      // Aggiungere un controllo per non sovrascrivere celle già occupate
-      if (updatedBoard[rowIndex][colIndex] === null) {
-        updatedBoard[rowIndex][colIndex] = 'X';
-      }
+      const updatedBoard = [...prev.map(innerArray => [...innerArray])];
+      updatedBoard[rowIndex][colIndex] = activePlayerSymbol;
       return updatedBoard;
     });
+
+    onSelectSquare();
   }
 
-   return (
+  return (
     <ol id="game-board">
       {gameBoard.map((row, rowIndex) => (
         <li key={rowIndex}>
